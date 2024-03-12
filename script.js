@@ -222,22 +222,26 @@ const switchPlayer = function () {
 // Rolling dice functionality
 btnRoll.addEventListener("click", rollDice);
 document.addEventListener("keydown", function (e) {
-	if (e.key === "f" && e.key === "F") {
+	if (e.key === "f" || e.key === "F") {
 		rollDice();
 	}
 });
 
 btnHold.addEventListener("click", hold);
 document.addEventListener("keydown", function (e) {
-	if (e.key === "h" && e.key === "H") {
+	if (e.key === "h" || e.key === "H") {
 		hold();
 	}
 });
 
 btnNew.addEventListener("click", init);
 btnHelp.addEventListener("click", function () {
-	helpPopup.classList.remove("hidden");
-	helpGoal.textContent = goal;
+	if (helpPopup.classList.contains("hidden")) {
+		helpPopup.classList.remove("hidden");
+		helpGoal.textContent = goal;
+	} else {
+		helpPopup.classList.add("hidden");
+	}
 });
 
 popupBtn.addEventListener("click", function () {
